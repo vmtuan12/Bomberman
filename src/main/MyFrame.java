@@ -14,7 +14,6 @@ public class MyFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Bomberman cua tuan dep trai");
         this.getContentPane().setBackground(Color.BLUE);
-//        this.setSize(gamePanel.screenW, gamePanel.screenH);
         this.setResizable(false);
         this.add(gamePanel);
         this.pack();

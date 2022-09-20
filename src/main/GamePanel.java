@@ -1,30 +1,27 @@
 package main;
 
-import javax.swing.JPanel;
+import gameChar.Player;
+import tile.TileMng;
+
 import java.awt.*;
 
-public class GamePanel extends JPanel implements Runnable {
-    final int tileSz = 16;
-    final int scale = 3;
-    final int actualTileSz = tileSz * scale;
-    final int maxCol = 17;
-    final int maxRow = 13;
-    final int screenW = actualTileSz * maxCol; // 816
-    final int screenH = actualTileSz * maxRow; // 624
+public class GamePanel extends GamePanelValues implements Runnable {
 
-    Thread gameThread;
+    private Thread gameThread;
 
-    KeyHandle key = new KeyHandle();
+    private KeyHandle key = new KeyHandle();
 
-    private int playerX = 100;
-    private int playerY = 100;
+    private TileMng tileMng = new TileMng(this);
+    private Player player = new Player(key, this);
 
-    private final int fps = 60;
+    public Player getPlayer() {
+        return player;
+    }
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenW, screenH));
         this.setDoubleBuffered(true); // improve game's rendering performance
-        this.setBackground(Color.blue);
+        this.setBackground(Color.black);
         this.addKeyListener(key);
         this.setFocusable(true); // gamepanel focus to receive key input
     }
@@ -54,19 +51,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if(key.isUp()) playerY -= 5;
-        if(key.isDown()) playerY += 5;
-        if(key.isLeft()) playerX -= 5;
-        if(key.isRight()) playerX += 5;
-
+        player.update();
     }
 
     @Override
     public void paintComponent(Graphics g1) {
         super.paintComponent(g1);
         Graphics2D g2 = (Graphics2D) g1;
-        g2.fillRect(playerX,playerY,200,100);
-        g2.setColor(Color.black);
+        tileMng.renderImg(g2);
+        player.renderImg(g2);
         g2.dispose();
     }
 }
