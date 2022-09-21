@@ -1,23 +1,54 @@
 package gameChar;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Entity {
-    public int x, y;
-    public int speed;
+    protected int x, y;
+    protected int speed;
+    protected Rectangle hitbox;
+    protected boolean collided = false;
 
-    public BufferedImage[] up;
-    public BufferedImage[] down;
-    public BufferedImage[] left;
-    public BufferedImage[] right;
+    protected BufferedImage[] up;
+    protected BufferedImage[] down;
+    protected BufferedImage[] left;
+    protected BufferedImage[] right;
 
-    public int direction;
+    protected int direction;
     /* 0 = down
        1 = up
        2 = left
        3 = right
      */
-    public int spriteCounter = 0;
-    public int spriteNum = 0;
+    protected int spriteCounter = 0;
+    protected int spriteNum = 0;
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Rectangle getHitbox() {
+        return hitbox;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public boolean isCollided() {
+        return collided;
+    }
+
+    public void setCollided(boolean collided) {
+        this.collided = collided;
+    }
 
 }

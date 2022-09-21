@@ -1,6 +1,7 @@
 package main;
 
 import gameChar.Player;
+import keyHandle.KeyHandle;
 import tile.TileMng;
 
 import java.awt.*;
@@ -9,13 +10,23 @@ public class GamePanel extends GamePanelValues implements Runnable {
 
     private Thread gameThread;
 
-    private KeyHandle key = new KeyHandle();
+    private final KeyHandle key = new KeyHandle();
 
-    private TileMng tileMng = new TileMng(this);
-    private Player player = new Player(key, this);
+    private final TileMng tileMng = new TileMng(this);
+    private final Player player = new Player(key, this);
+
+    private final CollisionDectection collisionDectection = new CollisionDectection(this);
 
     public Player getPlayer() {
         return player;
+    }
+
+    public TileMng getTileMng() {
+        return tileMng;
+    }
+
+    public CollisionDectection getCollisionDectection() {
+        return collisionDectection;
     }
 
     public GamePanel() {
@@ -50,7 +61,7 @@ public class GamePanel extends GamePanelValues implements Runnable {
         }
     }
 
-    public void update() {
+    private void update() {
         player.update();
     }
 

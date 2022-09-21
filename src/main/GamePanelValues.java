@@ -6,10 +6,10 @@ public class GamePanelValues extends JPanel {
     final int tileSz = 16;
     final int scale = 3;
     final int actualTileSz = tileSz * scale;
-    final int maxCol = 20;
+    final int maxCol = 16;
     final int maxRow = 13;
-    final int bigMapCol = 50;
-    final int bigMapRow = 50;
+    final int bigMapCol = 30;
+    final int bigMapRow = 30;
 
     final int screenW = actualTileSz * maxCol; // 960
     final int screenH = actualTileSz * maxRow; // 624
