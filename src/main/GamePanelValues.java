@@ -1,22 +1,54 @@
 package main;
 
+import bomb.Bomb;
+import gameChar.Player;
+import keyHandle.KeyHandle;
+import obj.ObjCreator;
+import obj.Object;
+import tile.TileMng;
+
 import javax.swing.JPanel;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamePanelValues extends JPanel {
-    final int tileSz = 16;
-    final int scale = 3;
-    final int actualTileSz = tileSz * scale;
-    final int maxCol = 16;
-    final int maxRow = 13;
-    final int bigMapCol = 30;
-    final int bigMapRow = 30;
+    protected final int tileSz = 16;
+    protected final int scale = 3;
+    protected final int actualTileSz = tileSz * scale;
+    protected final int maxCol = 16;
+    protected final int maxRow = 13;
+    protected final int bigMapCol = 30;
+    protected final int bigMapRow = 30;
 
-    final int screenW = actualTileSz * maxCol; // 960
-    final int screenH = actualTileSz * maxRow; // 624
-    final int bigMapW = actualTileSz * bigMapCol;
-    final int bigMapH = actualTileSz * bigMapRow;
+    protected final int screenW = actualTileSz * maxCol; // 960
+    protected final int screenH = actualTileSz * maxRow; // 624
+    protected final int bigMapW = actualTileSz * bigMapCol;
+    protected final int bigMapH = actualTileSz * bigMapRow;
 
-    final int fps = 60;
+    protected final int fps = 60;
+
+    protected Thread gameThread;
+    protected final KeyHandle key = new KeyHandle();
+    protected TileMng tileMng;
+    protected Player player;
+    protected CollisionDectection collisionDectection;
+    public Object[] objects = new Object[10];
+    protected ObjCreator objCreator;
+
+    protected Bomb bomb;
+    public List<Bomb> bombList = new ArrayList<>();
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public TileMng getTileMng() {
+        return tileMng;
+    }
+
+    public CollisionDectection getCollisionDectection() {
+        return collisionDectection;
+    }
     public int getActualTileSz() {
         return actualTileSz;
     }
@@ -55,5 +87,13 @@ public class GamePanelValues extends JPanel {
 
     public int getBigMapW() {
         return bigMapW;
+    }
+
+    public Object[] getObjects() {
+        return objects;
+    }
+
+    public void setObjects(int n, Object obj) {
+        objects[n] = obj;
     }
 }

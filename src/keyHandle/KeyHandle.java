@@ -1,10 +1,13 @@
 package keyHandle;
 
+import main.GamePanel;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandle implements KeyListener {
     private boolean up, down, left, right;
+    private boolean placeBomb = false;
 
     public boolean isUp() {
         return up;
@@ -38,6 +41,14 @@ public class KeyHandle implements KeyListener {
         this.right = right;
     }
 
+    public boolean isPlaceBomb() {
+        return placeBomb;
+    }
+
+    public void setPlaceBomb(boolean placeBomb) {
+        this.placeBomb = placeBomb;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -58,6 +69,9 @@ public class KeyHandle implements KeyListener {
         if(key == KeyEvent.VK_D){
             right = true;
         }
+        if(key == KeyEvent.VK_J){
+            setPlaceBomb(true);
+        }
 
     }
 
@@ -75,6 +89,9 @@ public class KeyHandle implements KeyListener {
         }
         if(key == KeyEvent.VK_D){
             right = false;
+        }
+        if(key == KeyEvent.VK_J){
+            setPlaceBomb(false);
         }
     }
 }

@@ -17,7 +17,14 @@ public class ImageGetter {
                                     "srcImg/block/wall/wall_left2.png",
                                     "srcImg/block/floor/way_out.png"};
 
-    private final String bomb = "srcImg/bomb/bomb_character_o_fall_down.png";
+    private final String[] bomb = {"srcImg/bomb/big_demon_idle_anim_f0.png",
+                                    "srcImg/bomb/big_demon_idle_anim_f1.png",
+                                    "srcImg/bomb/big_demon_idle_anim_f2.png",
+                                    "srcImg/bomb/big_demon_idle_anim_f3.png"};
+    private final String[] explosion = {"srcImg/explosion/bomb_exploded.png",
+                                        "srcImg/explosion/explosion_vertical.png",
+                                        "srcImg/explosion/explosion_horizontal.png"};
+
 
     public String getPlayerImg() {
         return playerImg;
@@ -27,7 +34,11 @@ public class ImageGetter {
         return block;
     }
 
-    public String getBomb() {
+    public String[] getBomb() {
         return bomb;
+    }
+
+    public String[] getExplosion() {
+        return explosion;
     }
 }

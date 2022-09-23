@@ -36,6 +36,7 @@ public class TileMng {
                 tiles[i] = new Tile();
                 tiles[i].img = ImageIO.read(new File(imageGetter.getBlock()[i]));
                 if (i != 0 && i != 12) tiles[i].setImpassable(true);
+                if (i == 1) tiles[i].setBreakable(true);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,6 +68,7 @@ public class TileMng {
     }
 
     private boolean checkPosition(int x, int y) {
+        // render image just in the screen, not render outside the screen
         return x + gPanel.getActualTileSz() > gPanel.getPlayer().getX() - gPanel.getPlayer().getScreenX() &&
                 x - gPanel.getActualTileSz() < gPanel.getPlayer().getX() + gPanel.getPlayer().getScreenX() &&
                 y + gPanel.getActualTileSz() > gPanel.getPlayer().getY() - gPanel.getPlayer().getScreenY() &&
@@ -83,7 +85,7 @@ public class TileMng {
             int screenX = x - gPanel.getPlayer().getX() + gPanel.getPlayer().getScreenX();
             int screenY = y - gPanel.getPlayer().getY() + gPanel.getPlayer().getScreenY();
             if (checkPosition(x, y)) {
-                if (type != -1)
+                if (type != -1 && tiles[type].img != null)
                     g2.drawImage(tiles[type].img, screenX, screenY, gPanel.getActualTileSz(), gPanel.getActualTileSz(), null);
             }
             col++;

@@ -39,8 +39,8 @@ public class Player extends Entity {
     }
 
     public void setValue() {
-        this.x = 44;
-        this.y = 32;
+        this.x = 48;
+        this.y = 48;
         this.speed = 4;
         this.direction = 0;
     }
@@ -122,6 +122,6 @@ public class Player extends Entity {
             if (key.isRight()) img = right[spriteNum];
             else img = right[0];
         }
-        g2.drawImage(img, screenX, screenY, gPanel.getActualTileSz(), gPanel.getActualTileSz(), null);
+        if(img != null) g2.drawImage(img, screenX, screenY, gPanel.getActualTileSz(), gPanel.getActualTileSz(), null);
     }
 }
