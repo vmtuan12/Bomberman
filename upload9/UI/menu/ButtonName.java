@@ -10,6 +10,8 @@ public class ButtonName {
     final String pressEsc = "PRESS ESC TO GET BACK";
     final String chooseChar = "CHOOSE YOUR CHARACTER";
     final String upCursor = "^";
+    final String gamePaused = "GAME PAUSED";
+    final String pressP = "PRESS P TO CONTINUE";
 
     public ButtonName() {
 

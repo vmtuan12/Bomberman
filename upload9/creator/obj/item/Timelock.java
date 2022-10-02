@@ -5,7 +5,8 @@ import main.GamePanel;
 public class Timelock extends Item {
 
     public Timelock(GamePanel gPanel) {
-        super(0,"srcImg/item/timelock.png",gPanel);
+        super(0, gPanel);
+        loadImg(imageGetter.getItems()[0]);
     }
 
     @Override

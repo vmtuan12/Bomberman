@@ -1,6 +1,6 @@
 package event;
 
-import creator.gameChar.Player;
+import creator.gameChar.player.Player;
 import main.GamePanel;
 
 import java.awt.event.KeyEvent;
@@ -89,6 +89,7 @@ public class KeyHandle implements KeyListener {
                 }
                 else if(gPanel.getMenuButton().getCursorPosition() == 3) {
                     gPanel.getMenuButton().setCursorPosition(0);
+                    gPanel.setupWithoutMusic();
                     gPanel.setGameState(gPanel.gameChoosingChar);
                 }
             }
@@ -145,12 +146,21 @@ public class KeyHandle implements KeyListener {
                 placeBomb = true;
             }
             if(key == KeyEvent.VK_P) {
-                if(gPanel.getGameState() == gPanel.gamePlayed) gPanel.setGameState(gPanel.gamePaused);
-                else if(gPanel.getGameState() == gPanel.gamePaused) gPanel.setGameState(gPanel.gamePlayed);
+                gPanel.setGameState(gPanel.gamePaused);
             }
             if(key == KeyEvent.VK_ESCAPE) {
+                gPanel.playMusic(0);
                 gPanel.setGameState(gPanel.gameMenu);
-                gPanel.setup();
+            }
+        }
+
+        else if(gPanel.getGameState() == gPanel.gamePaused) {
+            if(key == KeyEvent.VK_P) {
+                gPanel.setGameState(gPanel.gamePlayed);
+            }
+            if(key == KeyEvent.VK_ESCAPE) {
+                gPanel.playMusic(0);
+                gPanel.setGameState(gPanel.gameMenu);
             }
         }
     }

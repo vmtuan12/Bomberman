@@ -2,19 +2,19 @@ package asset;
 
 public class ImageGetter {
 
-    private final String[] block = {"srcImg/block/floor/floor_2.png",
-                                    "srcImg/block/obstacle/crate3.png",
-                                    "srcImg/block/obstacle/stone2.png",
-                                    "srcImg/block/wall/wall_side_mid_left.png",
-                                    "srcImg/block/wall/wall_side_mid_right.png",
-                                    "srcImg/block/wall/wall.png",
-                                    "srcImg/block/wall/corner_right.png",
-                                    "srcImg/block/wall/corner_left.png",
-                                    "srcImg/block/wall/bot_corner_right.png",
-                                    "srcImg/block/wall/bot_corner_left.png",
-                                    "srcImg/block/wall/mid_right_filled.png",
-                                    "srcImg/block/wall/wall_left2.png",
-                                    "srcImg/block/floor/way_out.png"};
+    private final String[] block = {"srcImg/block/floor/floor_2.png",// 0
+                                    "srcImg/block/obstacle/crate3.png",// 1
+                                    "srcImg/block/obstacle/stone2.png",// 2
+                                    "srcImg/block/wall/wall_side_mid_left.png",// 3
+                                    "srcImg/block/wall/wall_side_mid_right.png",// 4
+                                    "srcImg/block/wall/wall.png",// 5
+                                    "srcImg/block/wall/corner_right.png",// 6
+                                    "srcImg/block/wall/corner_left.png",// 7
+                                    "srcImg/block/wall/bot_corner_right.png",// 8
+                                    "srcImg/block/wall/bot_corner_left.png",// 9
+                                    "srcImg/block/wall/left_l.png",// 10
+                                    "srcImg/block/wall/wall_left2.png",// 11
+                                    "srcImg/block/floor/way_out.png"};// 12
 
     private final String[] chars = {"srcImg/char/char1.png",
                                     "srcImg/char/char2.png",
@@ -37,7 +37,14 @@ public class ImageGetter {
                                     "srcImg/explosion/3.png",
                                     "srcImg/explosion/4.png"};
 
-    private final String timelock = "srcImg/item/timelock.png";
+    private final String[] items = {"srcImg/item/timelock.png",
+                                    "srcImg/item/heart.png",
+                                    "srcImg/item/boots.png",
+                                    "srcImg/item/bomb.png"};
+
+    private final String menuBackground = "srcImg/menu/background.png";
+
+    private final String menuTutorial = "srcImg/menu/tutorial.png";
 
     public String[] getBlock() {
         return block;
@@ -55,8 +62,8 @@ public class ImageGetter {
         return expl;
     }
 
-    public String getTimelock() {
-        return timelock;
+    public String[] getItems() {
+        return items;
     }
 
     public String[] getChars() {
@@ -65,5 +72,13 @@ public class ImageGetter {
 
     public String[] getCharDes() {
         return charDes;
+    }
+
+    public String getMenuBackground() {
+        return menuBackground;
+    }
+
+    public String getMenuTutorial() {
+        return menuTutorial;
     }
 }

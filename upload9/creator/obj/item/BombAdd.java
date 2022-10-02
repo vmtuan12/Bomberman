@@ -5,12 +5,13 @@ import main.GamePanel;
 public class BombAdd extends Item {
 
     public BombAdd(GamePanel gPanel) {
-        super(3,"srcImg/item/bomb.png",gPanel);
+        super(3,gPanel);
+        loadImg(imageGetter.getItems()[3]);
     }
 
     @Override
     public void action() {
         gPanel.playSound(5);
-        gPanel.getBomb().setBombQuantity(gPanel.getBomb().getBombQuantity() + 1);
+        gPanel.getPlayer().setCurrentBombQuantity(gPanel.getPlayer().getCurrentBombQuantity() + 1);
     }
 }

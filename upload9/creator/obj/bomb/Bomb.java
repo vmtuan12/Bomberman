@@ -8,7 +8,6 @@ import java.awt.*;
 public class Bomb extends BombCreator {
 
     private int timeCountToExplosion = 120;
-    private int bombQuantity = 10;
 
     private boolean downExlosion = true;
     private boolean upExlosion = true;
@@ -31,7 +30,7 @@ public class Bomb extends BombCreator {
         for(int i = 0; i < gPanel.bombList.size(); i++) {
 //            System.out.println("size: " + gPanel.bombList.size());
             Bomb b = gPanel.bombList.get(i);
-            b.timeCountToExplosion--;
+            if(gPanel.getGameState() == gPanel.gamePlayed) b.timeCountToExplosion--;
             if(b.timeCountToExplosion == 0) {
                 b.checkObstacle();
                 gPanel.bombList.remove(b);
@@ -126,8 +125,8 @@ public class Bomb extends BombCreator {
 
     public void renderBomb(Graphics2D g2, KeyHandle key) {
         if(key.isPlaceBomb()) {
-            if(bombQuantity != 0) {
-                bombQuantity--;
+            if(gPanel.getPlayer().getCurrentBombQuantity() != 0) {
+                gPanel.getPlayer().setCurrentBombQuantity(gPanel.getPlayer().getCurrentBombQuantity() - 1);
                 gPanel.bombList.add(new Bomb(gPanel));
                 key.setPlaceBomb(false);
             }
@@ -143,13 +142,5 @@ public class Bomb extends BombCreator {
     @Override
     public void action() {
 
-    }
-
-    public int getBombQuantity() {
-        return bombQuantity;
-    }
-
-    public void setBombQuantity(int bombQuantity) {
-        this.bombQuantity = bombQuantity;
     }
 }

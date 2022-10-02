@@ -1,6 +1,5 @@
 package creator.gameChar;
 
-import asset.ImageGetter;
 import main.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -16,7 +15,7 @@ public class Entity {
     protected int hitboxDefaultX;
     protected int hitboxDefaultY;
     protected boolean collided = false;
-    GamePanel gPanel;
+    protected GamePanel gPanel;
 
     protected BufferedImage[] up;
     protected BufferedImage[] down;
@@ -143,5 +142,9 @@ public class Entity {
 
     public int getLife() {
         return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 }

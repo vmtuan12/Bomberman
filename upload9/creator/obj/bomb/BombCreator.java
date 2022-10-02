@@ -34,7 +34,7 @@ public class BombCreator extends Object {
     }
 
     public void renderImg(Graphics2D g2, int x, int y, int spriteSpeed) {
-        spriteCounter++;
+        if(gPanel.getGameState() == gPanel.gamePlayed) spriteCounter++;
         if (spriteCounter > spriteSpeed) {
             if (spriteNum == 0) spriteNum = 1;
             else if (spriteNum == 1) spriteNum = 2;

@@ -5,7 +5,7 @@ import UI.menu.MenuBackground;
 import UI.menu.MenuButton;
 import creator.obj.bomb.Bomb;
 import creator.obj.bomb.Explosion;
-import creator.gameChar.Player;
+import creator.gameChar.player.Player;
 import creator.obj.item.Item;
 import event.CollisionDectection;
 import event.KeyHandle;
@@ -45,7 +45,7 @@ public class GamePanelValues extends JPanel {
     protected ObjCreator objCreator;
 
     //hud
-    protected ItemDisplay itemDisplay;
+    protected ItemDisplay itemHUDDisplay;
 
     // bomb
     protected Bomb bomb;
@@ -61,6 +61,7 @@ public class GamePanelValues extends JPanel {
     protected int gameState;
     public final int gameMenu = 0;
     public final int gameTutorial = 1;
+    public final int gameSetPlayerName = 2;
     public final int gameChoosingChar = 3;
     public final int gamePlayed = 4;
     public final int gamePaused = 5;

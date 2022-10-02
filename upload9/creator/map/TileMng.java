@@ -12,14 +12,14 @@ public class TileMng {
 
     private final GamePanel gPanel;
     private final Tile[] tiles;
-    private final int[][] tileMap;
+    private int[][] tileMap;
 
     public TileMng(GamePanel gp) {
         this.gPanel = gp;
         tiles = new Tile[30];
         tileMap = new int[gp.getBigMapRow()][gp.getBigMapCol()];
         getImage();
-        createMap("tile/map2.txt");
+        createMap("tile/map1.txt");
     }
 
     private void getImage() {

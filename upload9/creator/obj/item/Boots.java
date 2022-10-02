@@ -5,7 +5,8 @@ import main.GamePanel;
 public class Boots extends Item {
 
     public Boots(GamePanel gPanel) {
-        super(2,"srcImg/item/boots.png",gPanel);
+        super(2,gPanel);
+        loadImg(imageGetter.getItems()[2]);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package UI;
 
+import asset.ImageGetter;
 import main.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -14,10 +15,12 @@ public abstract class Status {
     protected GamePanel gPanel;
     protected BufferedImage img;
     protected BufferedImage[] imgArr;
+    protected ImageGetter imageGetter;
     private boolean finish = false;
 
     public Status(GamePanel gPanel) {
         this.gPanel = gPanel;
+        imageGetter = new ImageGetter();
     }
 
     public int getX() {

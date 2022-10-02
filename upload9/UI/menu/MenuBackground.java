@@ -10,7 +10,7 @@ public class MenuBackground extends Status {
 
     public MenuBackground(GamePanel gPanel) {
         super(gPanel);
-        loadImg("srcImg/menu/background.png",1920,624);
+        loadImg(imageGetter.getMenuBackground(),1920,624);
         setX(0);
         setY(0);
     }

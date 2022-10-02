@@ -34,7 +34,7 @@ public class Explosion extends BombCreator {
 //        int pos = 0;
         for(int i = 0; i < gPanel.explosionList.size(); i++) {
             Explosion e = gPanel.explosionList.get(i);
-            e.explosionTime--;
+            if(gPanel.getGameState() == gPanel.gamePlayed) e.explosionTime--;
             if(e.explosionTime == 0) {
                 gPanel.explosionList.remove(e);
                 i--;

@@ -1,5 +1,6 @@
 package creator.obj.item;
 
+import asset.ImageGetter;
 import creator.obj.Object;
 import main.GamePanel;
 
@@ -13,13 +14,14 @@ public class Item extends Object {
 
     protected BufferedImage img;
     protected int id;
-    public Item(int id, String file, GamePanel gPanel) {
+    protected ImageGetter imageGetter = new ImageGetter();
+
+    public Item(int id, GamePanel gPanel) {
         this.gPanel = gPanel;
         this.id = id;
-        loadImg(file);
     }
 
-    private void loadImg(String file) {
+    protected void loadImg(String file) {
         try {
             BufferedImage scaledImg;
             Graphics2D g2;

@@ -19,7 +19,7 @@ public class MyFrame extends JFrame {
         // not specify the location of window -> displayed at center of the screen
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        gamePanel.setup();
+        gamePanel.playMusic(0);
         gamePanel.startGame();
     }
 }

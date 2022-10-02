@@ -23,9 +23,9 @@ public class ObjCreator {
     }
 
     public void createObj() {
-        gPanel.setObjects(sz++,new Timelock(gPanel),4*gPanel.getActualTileSz(), gPanel.getActualTileSz());
-        gPanel.setObjects(sz++,new Life(gPanel),2*gPanel.getActualTileSz(), gPanel.getActualTileSz());
-        gPanel.setObjects(sz++,new Boots(gPanel),3*gPanel.getActualTileSz(), gPanel.getActualTileSz());
-        gPanel.setObjects(sz++,new BombAdd(gPanel),5*gPanel.getActualTileSz(), gPanel.getActualTileSz());
+//        gPanel.setObjects(sz++,new Timelock(gPanel),4*gPanel.getActualTileSz(), gPanel.getActualTileSz());
+//        gPanel.setObjects(sz++,new Life(gPanel),2*gPanel.getActualTileSz(), gPanel.getActualTileSz());
+//        gPanel.setObjects(sz++,new Boots(gPanel),3*gPanel.getActualTileSz(), gPanel.getActualTileSz());
+//        gPanel.setObjects(sz++,new BombAdd(gPanel),5*gPanel.getActualTileSz(), gPanel.getActualTileSz());
     }
 }

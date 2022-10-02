@@ -1,7 +1,6 @@
 package UI.menu;
 
 import UI.Status;
-import asset.ImageGetter;
 import main.GamePanel;
 
 import java.awt.*;
@@ -31,10 +30,8 @@ public class MenuButton extends Status {
     }
 
     private void getImg() {
-        ImageGetter imageGetter = new ImageGetter();
-        loadImg("srcImg/menu/tutorial.png");
+        loadImg(imageGetter.getMenuTutorial());
         loadImgArr(imageGetter.getCharDes(),charDesSize,charDesSize);
-
     }
 
     private void loadFont() {
@@ -63,41 +60,43 @@ public class MenuButton extends Status {
         g2.setFont(m5x7);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,60F));
         g2.setColor(Color.black);
-
+        // menu
         if(gPanel.getGameState() == gPanel.gameMenu) {
-            positionXOfText = calculatePosXCenter(g2,button.newGame);
-            g2.drawString(button.newGame,positionXOfText,300);
-            if(cursorPosition == 3) {
-                g2.drawString(button.cursor,positionXOfText - positionXOfText/5,300);
-            }
-
-            positionXOfText = calculatePosXCenter(g2,button.loadGame);
-            g2.drawString(button.loadGame,positionXOfText,350);
-            if(cursorPosition == 2) {
-                g2.drawString(button.cursor,positionXOfText - positionXOfText/5,350);
-            }
-
-            positionXOfText = calculatePosXCenter(g2,button.tutorial);
-            g2.drawString(button.tutorial,positionXOfText,400);
-            if(cursorPosition == 1) {
-                g2.drawString(button.cursor,positionXOfText - positionXOfText/5,400);
-            }
-
-            positionXOfText = calculatePosXCenter(g2,button.exit);
-            g2.drawString(button.exit,positionXOfText,450);
-            if(cursorPosition == 0) {
-                g2.drawString(button.cursor,positionXOfText - positionXOfText/5,450);
-            }
+            gameMenu(g2);
         }
+        // choosing character
         else if(gPanel.getGameState() == gPanel.gameChoosingChar) {
             choosingChar(g2);
         }
+        // tutorial
         else if(gPanel.getGameState() == gPanel.gameTutorial) {
-            g2.drawImage(this.img,153,250,null);
-            positionXOfText = calculatePosXCenter(g2,button.tutorial);
-            g2.drawString(button.tutorial,positionXOfText,150);
-            positionXOfText = calculatePosXCenter(g2,button.pressEsc);
-            g2.drawString(button.pressEsc,positionXOfText,550);
+            gameTutorial(g2);
+        }
+    }
+
+    private void gameMenu(Graphics2D g2) {
+        positionXOfText = calculatePosXCenter(g2,button.newGame);
+        g2.drawString(button.newGame,positionXOfText,300);
+        if(cursorPosition == 3) {
+            g2.drawString(button.cursor,positionXOfText - positionXOfText/5,300);
+        }
+
+        positionXOfText = calculatePosXCenter(g2,button.loadGame);
+        g2.drawString(button.loadGame,positionXOfText,350);
+        if(cursorPosition == 2) {
+            g2.drawString(button.cursor,positionXOfText - positionXOfText/5,350);
+        }
+
+        positionXOfText = calculatePosXCenter(g2,button.tutorial);
+        g2.drawString(button.tutorial,positionXOfText,400);
+        if(cursorPosition == 1) {
+            g2.drawString(button.cursor,positionXOfText - positionXOfText/5,400);
+        }
+
+        positionXOfText = calculatePosXCenter(g2,button.exit);
+        g2.drawString(button.exit,positionXOfText,450);
+        if(cursorPosition == 0) {
+            g2.drawString(button.cursor,positionXOfText - positionXOfText/5,450);
         }
     }
 
@@ -131,7 +130,25 @@ public class MenuButton extends Status {
         if(cursorPosition == 2) {
             g2.drawString(button.upCursor,positionXOfText,400);
         }
+    }
 
+    private void gameTutorial(Graphics2D g2) {
+        g2.drawImage(this.img,153,250,null);
+        positionXOfText = calculatePosXCenter(g2,button.tutorial);
+        g2.drawString(button.tutorial,positionXOfText,150);
+        positionXOfText = calculatePosXCenter(g2,button.pressEsc);
+        g2.drawString(button.pressEsc,positionXOfText,550);
+    }
+
+    public void gamePaused(Graphics2D g2) {
+        g2.setFont(m5x7);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,90F));
+        g2.setColor(Color.white);
+
+        positionXOfText = calculatePosXCenter(g2,button.gamePaused);
+        g2.drawString(button.gamePaused,positionXOfText,100);
+        positionXOfText = calculatePosXCenter(g2,button.pressP);
+        g2.drawString(button.pressP,positionXOfText,500);
     }
 
     private void updateColor() {

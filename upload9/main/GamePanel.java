@@ -5,7 +5,7 @@ import UI.menu.MenuBackground;
 import UI.menu.MenuButton;
 import creator.obj.bomb.Bomb;
 import creator.obj.bomb.Explosion;
-import creator.gameChar.Player;
+import creator.gameChar.player.Player;
 import creator.obj.ObjCreator;
 import creator.map.TileMng;
 import event.CollisionDectection;
@@ -19,7 +19,7 @@ public class GamePanel extends GamePanelValues implements Runnable {
         key = new KeyHandle(this);
         tileMng = new TileMng(this);
         player = new Player(key, this,1);
-        itemDisplay = new PlayerLife(this);
+        itemHUDDisplay = new PlayerLife(this);
         collisionDectection = new CollisionDectection(this);
         objCreator = new ObjCreator(this);
         bomb = new Bomb(this);
@@ -59,10 +59,24 @@ public class GamePanel extends GamePanelValues implements Runnable {
         }
     }
 
-    public void setup() {
+    // first setup for new game
+//    private void setup() {
+//        objCreator.setSz(0);
+//        objCreator.createObj();
+//        playMusic(0);
+//        player.setCurrentBombQuantity(player.getMaxBomb());
+//        bombList.clear();
+//        explosionList.clear();
+//        gameState = gameMenu;
+//    }
+
+    public void setupWithoutMusic() {
         objCreator.setSz(0);
         objCreator.createObj();
-        playMusic(0);
+        player.setCurrentBombQuantity(player.getMaxBomb());
+        bombList.clear();
+        explosionList.clear();
+        tileMng = new TileMng(this);
         gameState = gameMenu;
     }
 
@@ -80,7 +94,7 @@ public class GamePanel extends GamePanelValues implements Runnable {
         super.paintComponent(g1);
         Graphics2D g2 = (Graphics2D) g1;
 
-        if(gameState != gamePlayed) {
+        if(gameState != gamePlayed && gameState != gamePaused) {
             menuBackground.renderImg(g2);
             menuButton.renderButton(g2);
         } else {
@@ -88,12 +102,14 @@ public class GamePanel extends GamePanelValues implements Runnable {
             for(int i = 0; i < objCreator.getSz(); i++) {
                 if(items[i] != null) items[i].renderImg(g2,this);
             }
-            itemDisplay.renderImg(g2);
+            itemHUDDisplay.renderImg(g2);
             player.renderImg(g2);
             bomb.renderBomb(g2,key);
             collisionDectection.checkExplosionZone(player);
             explosion.renderExplosion(g2);
             player.pickUpItem(collisionDectection.checkCollisionObj(player,true));
+
+            if(gameState == gamePaused) menuButton.gamePaused(g2);
         }
         g2.dispose();
     }
